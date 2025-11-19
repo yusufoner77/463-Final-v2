@@ -15,8 +15,8 @@
 using namespace std;
 
 //******************************************************************************
-// This function must return a std::string with exactly 2 hex digits representing 
-// the 8 bits of the i argument.
+// This function takes a uint8_t parameter i must return a std::string with exactly 2  
+// hex digits representing the 8 bits of the i argument.
 //******************************************************************************
 string hex::to_hex8(uint8_t i)
 {
@@ -26,8 +26,8 @@ string hex::to_hex8(uint8_t i)
 }
 
 //******************************************************************************
-// This function must return a std::string with 8 hex digits representing the 32 
-// bits of the i argument
+// This function takes a uint32_t parameter i and must return a std::string with 8  
+// hex digits representing the 32 bits of the i argument
 //******************************************************************************
 string hex::to_hex32(uint32_t i)
 {
@@ -37,10 +37,40 @@ string hex::to_hex32(uint32_t i)
 }
 
 //******************************************************************************
-// This function must return a std::string beginning with 0x, followed by the 
-// 8 hex digits representing the 32 bits of the i argument
+// This function takes a uint32_t parameter i and must return a std::string beginning
+// with 0x, followed by the 8 hex digits representing the 32 bits of the i argument
 //******************************************************************************
 string hex::to_hex0x32(uint32_t i)
 {
   return string("0x")+to_hex32(i);
+}
+
+//******************************************************************************
+// This function takes a uint32_t parameter i and must return a std::string beginning
+// with 0x, followed by the 5 hex digits representing the 20 least significant bits
+// of the i argument
+//******************************************************************************
+string hex::to_hex0x20(uint32_t i)
+{
+  uint32_t val = i & 0xFFFFF;   // keep ONLY low 20 bits
+
+  ostringstream os;
+  os << "0x" << std::hex << setfill('0') << setw(5) << val;
+
+  return os.str();
+}
+
+//******************************************************************************
+// This function takes a uint32_t parameter i and must return a std::string beginning
+// with 0x, followed by the 3 hex digits representing the 12 least significant bits
+// of the i argument
+//******************************************************************************
+string hex::to_hex0x12(uint32_t i)
+{
+  uint32_t val = i & 0xFFF;   // keep ONLY low 20 bits
+
+  ostringstream os;
+  os << "0x" << std::hex << setfill('0') << setw(3) << val;
+
+  return os.str();
 }
