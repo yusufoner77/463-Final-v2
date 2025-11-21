@@ -14,6 +14,10 @@
 #include "hex.h"
 using namespace std;
 
+//******************************************************************************
+// Represent a memory whose size is defined at run-time via command-line argument.
+//******************************************************************************
+
 class memory : public hex
 {
 public:

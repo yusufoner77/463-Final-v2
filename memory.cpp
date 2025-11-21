@@ -15,8 +15,8 @@
 using namespace std;
 
 //******************************************************************************
-// Allocate siz bytes in the mem vector and initialize every byte/element to 0xa5.
-// Implements rounding logic for formatting and alignment
+// Takes uint32_t siz as parameter and allocate siz bytes in the mem vector and 
+// initialize every byte/element to 0xa5. Implements rounding logic for formatting and alignment
 //******************************************************************************
 memory::memory(uint32_t siz)
 {
@@ -25,7 +25,7 @@ memory::memory(uint32_t siz)
 }
 
 //******************************************************************************
-// destructor for cleanup
+// destructor for cleanup (no param)
 //******************************************************************************
 memory::~memory()
 {
@@ -33,8 +33,8 @@ memory::~memory()
 }
 
 //******************************************************************************
-// Return true if the given address i does not represent an element that is present
-// in the mem vector
+// Takes a uint32_t address and return true if the given address i does not represent 
+// an element that is present in the mem vector
 //******************************************************************************
 bool memory::check_illegal(uint32_t addr) const
 {
@@ -47,7 +47,7 @@ bool memory::check_illegal(uint32_t addr) const
 }
 
 //******************************************************************************
-// Return the (rounded up) number of bytes in the simulated memory
+// Return the (rounded up) number of bytes in the simulated memory (no param)
 //******************************************************************************
 uint32_t memory::get_size() const
 {
@@ -55,8 +55,8 @@ uint32_t memory::get_size() const
 }
 
 //******************************************************************************
-// Check to see if the given addr is in your mem by calling check_illegal(). If addr
-// is in the valid range then return the value of the byte from your simulated memory
+// Check to see if the given addr (uint32_t parameter) is in your mem by calling check_illegal(). 
+// If addr is in the valid range then return the value of the byte from your simulated memory
 // at the given address. If addr is not in the valid range then return zero to the caller.
 //******************************************************************************
 uint8_t memory::get8(uint32_t addr) const
@@ -68,8 +68,8 @@ uint8_t memory::get8(uint32_t addr) const
 }
 
 //******************************************************************************
-// This function must call your get8() function twice to get two bytes and then combine them
-// in little-endian1 order to create a 16-bit return value
+// Takes a uint32_t address as a parameter, and calls get8() function twice to get
+// two bytes and then combine them in little-endian1 order to return a 16-bit uint16_t
 //******************************************************************************
 uint16_t memory::get16(uint32_t addr) const
 {
@@ -80,8 +80,8 @@ uint16_t memory::get16(uint32_t addr) const
 }
 
 //******************************************************************************
-// This function must call get16() function twice and combine the results in 
-// little-endian order
+// Takes a uint32_t address as a parameter, and calls get16() function twice and combine  
+// the results in little-endian order to return a uint32_t
 //******************************************************************************
 uint32_t memory::get32(uint32_t addr) const 
 {
@@ -92,8 +92,8 @@ uint32_t memory::get32(uint32_t addr) const
 }
 
 //******************************************************************************
-// This function will call get8() and then return the sign-extended value of the 
-// byte as a 32-bit signed integer.
+// Takes a uint32_t address as a parameter, this function will call get8() and then  
+// return the sign-extended value of the byte as a 32-bit signed integer.
 //******************************************************************************
 int32_t memory::get8_sx(uint32_t addr) const 
 {
@@ -102,8 +102,8 @@ int32_t memory::get8_sx(uint32_t addr) const
 }
 
 //******************************************************************************
-// This function will call get16() and then return the sign-extended value of the 
-// 16-bit value as a 32-bit signed integer
+// Takes a uint32_t address as a parameter, this function will call get16() and then  
+// return the sign-extended value of the 16-bit value as a 32-bit signed integer
 //******************************************************************************
 int32_t memory::get16_sx(uint32_t addr) const
 {
@@ -112,7 +112,8 @@ int32_t memory::get16_sx(uint32_t addr) const
 }
 
 //******************************************************************************
-// This function will call get32() and then return the value as a 32-bit signed integer.
+// Takes a uint32_t address as a parameter, this function will call get32() and then 
+// return the value as a 32-bit signed integer.
 //******************************************************************************
 int32_t memory::get32_sx(uint32_t addr) const
 {
@@ -120,9 +121,10 @@ int32_t memory::get32_sx(uint32_t addr) const
 }
 
 //******************************************************************************
-// This function will call check_illegal() to verify the addr argument is valid. If addr is valid
-// then set the byte in the simulated memory at that address to the given val. If addr is not
-// valid then discard the data and return to the caller.
+// Takes a uint32_t address and a uint8_t value as a parameter. This function will call 
+// check_illegal() to verify the addr argument is valid. If addr is valid then set the 
+// byte in the simulated memory at that address to the given val. If addr is not
+// valid then discard the data and return to the caller. Returns nothing (void)
 //******************************************************************************
 void memory::set8(uint32_t addr, uint8_t val)
 {
@@ -134,8 +136,9 @@ void memory::set8(uint32_t addr, uint8_t val)
 }
 
 //******************************************************************************
-// This function will call set8() twice to store the given val in little-endian order into the
-// simulated memory starting at the address given in the addr argument.
+// Takes a uint32_t address and a uint16_t value as a parameter.This function will call
+// set8() twice to store the given val in little-endian order into the
+// simulated memory starting at the address given in the addr argument. Returns nothing.
 //******************************************************************************
 void memory::set16(uint32_t addr, uint16_t val)
 {
@@ -144,8 +147,9 @@ void memory::set16(uint32_t addr, uint16_t val)
 }
 
 //******************************************************************************
-// This function will call set16() twice to store the given val in little-endian order into the
-// simulated memory starting at the address given in the addr argument.
+// Takes a uint32_t address and a uint32_t value as a parameter. This function will call 
+// set16() twice to store the given val in little-endian order into the
+// simulated memory starting at the address given in the addr argument. Returns nothing.
 //******************************************************************************
 void memory::set32(uint32_t addr, uint32_t val)
 {
@@ -155,7 +159,7 @@ void memory::set32(uint32_t addr, uint32_t val)
 
 //******************************************************************************
 // Dump the entire contents of your simulated memory in hex with the corresponding ASCII2
-// characters on the right 
+// characters on the right. No parameter or return.
 //******************************************************************************
 void memory::dump() const
 {
@@ -195,6 +199,7 @@ void memory::dump() const
 
 //******************************************************************************
 // Open the file named fname in binary mode and read its contents into your simulated memory.
+// Takes a string filename as its parameter and returns true if it can open and false if not.
 //******************************************************************************
 bool memory::load_file(const string &fname)
 {

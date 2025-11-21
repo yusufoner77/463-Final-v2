@@ -12,6 +12,11 @@
 #include <cstdint>
 #include <string>
 
+//******************************************************************************
+// contains some utility functions for formatting numbers as hex strings
+// for printing
+//******************************************************************************
+
 class hex
 {
   public:
